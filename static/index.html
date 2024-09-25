@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="x" placeholder="Enter first number" required>
+    <input type="number" id="y" placeholder="Enter second number" required>
+    
+    <select id="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select>
+
+    <button id="calculate">Calculate</button>
+    
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    document.getElementById('calculate').onclick = function() {
+        const x = parseFloat(document.getElementById('x').value);
+        const y = parseFloat(document.getElementById('y').value);
+        const operation = document.getElementById('operation').value;
+        
+        fetch('/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ x, y, operation })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result !== undefined) {
+                document.getElementById('result').innerText = `Result: ${data.result}`;
+            } else {
+                document.getElementById('result').innerText = `Error: ${data.error}`;
+            }
+        })
+        .catch(error => {
+            document.getElementById('result').innerText = `Error: ${error}`;
+        });
+    };
+</script>
+
+</body>
+</html>
