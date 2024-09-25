@@ -1,0 +1,69 @@
+# Simple Calculator
+
+A simple web-based calculator built using HTML, CSS, and JavaScript. This project demonstrates fundamental web development skills and the ability to containerize applications using Docker and deploy them on a Kubernetes cluster.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Building the Docker Image](#building-the-docker-image)
+- [Deploying to Kubernetes](#deploying-to-kubernetes)
+- [Accessing the Application](#accessing-the-application)
+- [License](#license)
+
+## Features
+
+- Basic arithmetic operations: addition, subtraction, multiplication, and division.
+- Responsive design for usability on various devices.
+- Simple and intuitive user interface.
+
+## Technologies Used
+
+- **Frontend**: HTML, CSS, JavaScript
+- **Containerization**: Docker
+- **Deployment**: Kubernetes
+
+## Setup Instructions
+
+To run this project locally, clone the repository and open `index.html` in your web browser:
+
+```bash
+git clone https://github.com/yourusername/simple-calculator.git
+cd simple-calculator
+
+Building the Docker Image
+
+Prerequisites:
+Docker: Ensure Docker is installed and running on your local machine.
+Docker Hub Account: Create a Docker Hub account.
+Project Files: Make sure your HTML, CSS, and JavaScript files are organized in the appropriate directories To get started, clone this project using Git: git clone https://github.com/shreejanh/SimpleCalculator.git
+Build:
+Open a terminal or command prompt and navigate to the project's root directory.
+Run the following command to build the Docker image:
+docker build -t /simple-calculator . Replace with your Docker Hub username (example: docker build -t shreejanh/simple-calculator .)
+Pushing the Docker Image
+
+Login:
+To push the image to Docker Hub, log in with your Docker Hub credentials: docker login
+Tag Image:
+Tag the image with your desired username and repository name: docker tag simple-calculator /simple-calculator:latest (e.g: docker tag simple-calculator shreejanh/simple-calculator:latest
+Push Image:
+Push the image to Docker Hub: docker push /simple-calculator:latest (e.g: docker push shreejanh/simple-calculator:latest)
+
+
+Deploying the Application using Kubernetes
+
+Prerequisites:
+A Kubernetes cluster configured and accessible.
+kubectl command-line tool installed and configured to interact with your cluster.
+Create Kubernetes Manifests:
+Create YAML files to define the deployment and service for your application: deployment.yaml: This file defines how replicas of your application should be deployed and managed. service.yaml: This file exposes your application running in pods as a service that other components can access.
+(Note: You can write deployment and service in same yaml file)
+
+Apply Manifests:
+Apply the YAML files to your Kubernetes cluster using the kubectl apply command: kubectl apply -f simple-calculator.yaml
+Access the Application:
+Retrieve the service's external IP or internal cluster IP using kubectl get service To check from the command line, type curl <Internal-IP'> (e.g: curl 10.110.11.22)
+
+Access the calculator at http://<IP_address>:. (e.g: 192.168.56.20:31200)
